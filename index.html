@@ -5,17 +5,187 @@
     <title>Title</title>
     <script src="http://localhost:5000/socket.io-1.3.7.js"></script>
     <script src="jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="styles/style.css" type="text/css">
+    <!--<script src="checkCountryOwners.js"></script>-->
+    <script>
+    $(document).ready(function(){
+        $('.countryAtkBtn').hide()
+    });
+
+</script>
+
 </head>
 <body>
 
 
-<script type="text/javascript" >
+<!--<script type="text/javascript" >
  console.log("working");
  var socket = io();
  socket.emit('chat message with ack', JSON.stringify("abc"), function(data){
        console.log('ACK from server wtih data: ', data);
  });
+</script>-->
+
+
+
+<button id="deployBtn"> Deploy 1 unit </button>
+<button class="countryAtkBtn">Attack</button>
+
+<!--<h2> User1's turn </h2>-->
+
+<img id="map" src="img/map-2.jpg" border="0" width="1920" height="1080" orgWidth="1920" orgHeight="1080" usemap="#gameMap" alt="" />
+<map name="gameMap" id="gamingMap">
+    <area  alt="" title="" href="alaska.html" shape="rect" coords="20,113,136,215"  target="_self" id="Alaska" />
+    <area  alt="" title="" href="North_west.html" shape="rect" coords="168,132,322,187" target="_self"   id="North_West"  />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="171,209,276,291" target="_self"  id="Alberta"   />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="292,197,380,298"  target="_self"    id="Ontario" />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="180,307,306,389"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="316,343,408,430"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="400,219,492,306"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="446,22,638,180"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="206,490,322,570"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="438,647,560,767"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="294,582,445,635"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="341,855,456,988"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="329,739,406,788"  target="_self"   id="Greenland"  />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="624,623,794,774"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="806,602,915,650"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="878,679,978,770"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="801,918,944,1052"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="832,788,906,850"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="974,930,1072,1012"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="610,461,727,555"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="729,306,846,400"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="749,433,866,527"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="578,292,695,386"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="643,175,723,240"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="738,127,862,244"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="876,234,990,425"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="952,501,1076,660"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1045,354,1124,456"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1085,194,1152,320"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1170,75,1244,235"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1279,217,1340,297"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1268,337,1376,404"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1203,437,1373,511"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1132,531,1219,693"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1263,584,1350,665"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1418,100,1545,181"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1434,715,1534,796"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1255,750,1411,857"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1335,909,1435,1016"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1516,842,1606,1043"  target="_self"     />
+    <area shape="rect" coords="1918,1078,1920,1080" alt="Image Map"  title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
+</map>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+
+    $('area').click(function(e) { //Funkcja zapobiegająca kliknięciu regionów(area) przed jakimkolwiek działaniem
+        e.preventDefault();
+    });
+
+    $.getJSON('users.json', { //Pobranie users.json
+        format: "json"
+    }).done(function(dataUsers) {
+        user1_units_to_deploy = dataUsers["users"]["user1"]["units_to_deploy"];
+        //alert(user1_units_to_deploy); //Działa...
+        });
+
+    $.getJSON('countries.json', { //Pobranie countries.json
+        format: "json"
+    }).done(function(dataCountries, countries) {
+    // Utworzenie zmiennych - wartościami są obiekty JSON pobrane z countries.json.
+        alaska_units = dataCountries.countries["North_America"]["Alaska"]["units"]; //Bez var, żeby zmienna w funckji stała się globalna
+        northAmerica_units = dataCountries.countries["North_America"]["Northamerica"]["units"];
+        // alert(alaska_units); //Działa...
+    // To be continued...
+    });
+
+    function getCountryInfo(continent, country, units, owner, dataCountries, countries) { //Początek funkcji pobierającej informacje, o tym, który region zajął użytkownik
+        //countryKeyUnits = dataCountries["countries"][continent][country]["units"]; //TODO Nadal nie może odczytać countries...
+        //countryKeyOwner = dataCountries.countries[continent][country]["owner"];
+
+        switch ( $('area').attr('id') ) {
+            case 'Alaska':
+                //countryKeyUnits += 1;
+                //alaska_units += 1;
+                dataCountries.countries["North_America"]["Alaska"]["units"] +=1 ; // Nadal nie może odczytać countries...
+                break;
+            case 'Northamerica':
+                //countryKeyUnits += 1;
+                northAmerica_units += 1;
+                break;
+            }
+        }
+
+    function checkCountryOwners(countryKeyOwner) {
+        if (countryKeyOwner === 0) {
+        return true; // True wskazuje to, że można tam rozmieścić jednostkę (bo region jest wolny)
+        } else if (countryKeyOwner === 1) {
+        return false; //
+        }
+
+
+    }
+
+    function attackBtn() {
+        $('.countryAtkBtn').show()
+    }
+
+
+    function deployBtn(countryKeyOwner) {
+        countryKeyOwner = 1; //Przypisanie właściciela regionowi
+        do { //Początek pętli do...while
+            user1_units_to_deploy -= 1;
+            if (user1_units_to_deploy === 0) {
+                $('#deployBtn').remove(); //Albo hide()
+            }
+            break; //Przerwanie pętli
+        } while (user1_units_to_deploy < 0) //Warunek i koniec pętli
+
+    }; // Koniec funkcji deployBtn
+
+
+
+
+    $('#deployBtn').click(function() {
+        //$('area').unbind('click'); // Funkcja cofająca wywołanie PreventDefault(); - na razie nie potrzebna
+        checkCountryOwners();
+        if( checkCountryOwners() ) { //Dla wartości true
+            countryKeyOwner = 1;
+
+        } else { //Dla wartości false
+            alert("Kraj jest już zajęty");
+
+        }
+        deployBtn();
+        getCountryInfo(); //Pobranie informacji
+
+
+    });
+
+
+
+}); // Koniec funkcji ready
+
 </script>
+
+
+
+
+
+
+
+
 
 
 </body>

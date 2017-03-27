@@ -1,0 +1,29 @@
+body, #map {
+width: 100%;
+margin: 0 0 0 0;
+ display: inline-block;
+    position: relative;
+}
+
+#map {
+position: relative;
+z-index: 1;
+top: 10px;
+}
+
+h2 {
+position: absolute;
+font-size: 35px;
+z-index: 2;
+text-align: center;
+margin: auto;
+bottom: 0;
+top: 45px;
+left: 0;
+right: 0;
+display: inline-block;
+
+
+}
+
+
