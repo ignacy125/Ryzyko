@@ -16,6 +16,9 @@ func main() {
 	server.On("connection", func(so socketio.Socket) {
 		log.Println("on connection")
 		so.Join("chat")
+		so.On("testowy_event", func(msg string) string {
+			return "witamy na stronie" //Sending ack with data in msg back to client, using "return statement"
+		})
 		so.On("chat message", func(msg string) {
 			m := make(map[string]interface{})
 			m["a"] = "你好"

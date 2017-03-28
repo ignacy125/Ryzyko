@@ -22,17 +22,10 @@
 <script src="/jquery-1.11.1.js"></script>
 <script>
       var socket = io();
-      $('form').submit(function(){
-        socket.emit('chat message with ack', $('#m').val(), function(data){
-          $('#messages').append($('<li>').text('ACK CALLBACK: ' + data));
-        });
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-      });
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-      });
+
+     socket.emit('testowy_event', JSON.stringify("dzien dobry"), function(data){
+       console.log('ACK from server wtih data: ', data);
+ });
     </script>
 </body>
 </html>
