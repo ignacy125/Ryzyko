@@ -31,7 +31,6 @@ func main() {
 
 			log.Println("emit:", so.Emit("chat message", msg))
 			so.BroadcastTo("chat", "chat message", msg)
-
 		})
 		// Socket.io acknowledgement example
 		// The return type may vary depending on whether you will return
@@ -47,8 +46,8 @@ func main() {
 		log.Println("error:", err)
 	})
 
-	//http.Handle("/js", http.FileServer(http.Dir("./js")))
-	http.Handle("/", http.FileServer(http.Dir("./")))
+	http.Handle("/socket.io/", server)
+	http.Handle("/", http.FileServer(http.Dir("./asset")))
 	log.Println("Serving at localhost:5000...")
 	log.Fatal(http.ListenAndServe(":5000", nil))
 }
