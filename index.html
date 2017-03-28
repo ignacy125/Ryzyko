@@ -89,36 +89,49 @@
 <script>
 $(document).ready(function() {
 
-    $('area').click(function(e) { //Funkcja zapobiegająca kliknięciu regionów(area) przed jakimkolwiek działaniem
+    $('area').click(function(e) {
         e.preventDefault();
     });
 
-    $.getJSON('users.json', { //Pobranie users.json
+    $.getJSON('users.json', {
         format: "json"
     }).done(function(dataUsers) {
         user1_units_to_deploy = dataUsers["users"]["user1"]["units_to_deploy"];
         //alert(user1_units_to_deploy); //Działa...
         });
 
-    $.getJSON('countries.json', { //Pobranie countries.json
+    $.getJSON('countries.json', {
         format: "json"
-    }).done(function(dataCountries, countries) {
-    // Utworzenie zmiennych - wartościami są obiekty JSON pobrane z countries.json.
+    }).done(function(dataCountries, countries, continent, country, units, owner) {
+
         alaska_units = dataCountries.countries["North_America"]["Alaska"]["units"]; //Bez var, żeby zmienna w funckji stała się globalna
         northAmerica_units = dataCountries.countries["North_America"]["Northamerica"]["units"];
+
+        var getUnitsKey = function(data, keyPropName, valuePropName) {
+            return $.countries(dataCountries, function(item, i) {
+            return {
+                key:   item[keyPropName],
+                value: item[valuePropName]
+            }
+          });
+        };
+
+
+
+
+        //countryKeyUnits = dataCountries.countries[continent][country]["units"]; // Nadal nie może odczytać countries...
+        //countryKeyOwner = dataCountries.countries[continent][country]["owner"];
         // alert(alaska_units); //Działa...
-    // To be continued...
     });
 
-    function getCountryInfo(continent, country, units, owner, dataCountries, countries) { //Początek funkcji pobierającej informacje, o tym, który region zajął użytkownik
-        //countryKeyUnits = dataCountries["countries"][continent][country]["units"]; //TODO Nadal nie może odczytać countries...
-        //countryKeyOwner = dataCountries.countries[continent][country]["owner"];
+    function getCountryInfo() { //Początek funkcji pobierającej informacje, o tym, który region zajął użytkownik
+
 
         switch ( $('area').attr('id') ) {
             case 'Alaska':
                 //countryKeyUnits += 1;
                 //alaska_units += 1;
-                dataCountries.countries["North_America"]["Alaska"]["units"] +=1 ; // Nadal nie może odczytać countries...
+                //dataCountries.countries["North_America"]["Alaska"]["units"] +=1 ; // Nadal nie może odczytać countries...
                 break;
             case 'Northamerica':
                 //countryKeyUnits += 1;
@@ -144,7 +157,7 @@ $(document).ready(function() {
 
     function deployBtn(countryKeyOwner) {
         countryKeyOwner = 1; //Przypisanie właściciela regionowi
-        do { //Początek pętli do...while
+        do { //Początek pętli
             user1_units_to_deploy -= 1;
             if (user1_units_to_deploy === 0) {
                 $('#deployBtn').remove(); //Albo hide()
@@ -158,17 +171,17 @@ $(document).ready(function() {
 
 
     $('#deployBtn').click(function() {
-        //$('area').unbind('click'); // Funkcja cofająca wywołanie PreventDefault(); - na razie nie potrzebna
+        //$('area').unbind('click'); // Funkcja cofająca wywołanie PreventDefault();
         checkCountryOwners();
-        if( checkCountryOwners() ) { //Dla wartości true
-            countryKeyOwner = 1;
-
-        } else { //Dla wartości false
-            alert("Kraj jest już zajęty");
-
-        }
         deployBtn();
         getCountryInfo(); //Pobranie informacji
+        /*if(countryKeyOwner === 1) {
+            alert("Kraj jest już zajęty");
+
+        } else if (countryKeyOwner === 0) {
+            countryKeyUnits += 1;
+
+        }*/
 
 
     });
