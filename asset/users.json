@@ -1,0 +1,24 @@
+{
+	"users": {
+		"user1": {
+			"turn": "true",
+			"units_to_deploy": "25",
+			"color": "red"
+		},
+		"user2": {
+			"turn": "false",
+			"units_to_deploy": "25",
+			"color": "blue"
+		},
+		"user3": {
+			"turn": "false",
+			"units_to_deploy": "25",
+			"color": "green"
+		},
+		"user4": {
+			"turn": "false",
+			"units_to_deploy": "25",
+			"color": "brown"
+		}
+	}
+}

@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/googollee/go-socket.io"
+	"strconv"
 )
 
 func main() {
@@ -17,7 +18,10 @@ func main() {
 		log.Println("on connection")
 		so.Join("chat")
 		so.On("testowy_event", func(msg string) string {
-			return "witamy na stronie" //Sending ack with data in msg back to client, using "return statement"
+			i, _ := strconv.ParseInt(msg, 10, 64)
+			i += 5
+			s := strconv.FormatInt(i, 10)
+			return s //Sending ack with data in msg back to client, using "return statement"
 		})
 		so.On("chat message", func(msg string) {
 			m := make(map[string]interface{})
