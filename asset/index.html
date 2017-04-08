@@ -24,7 +24,8 @@
     </style>
     <script src="/jquery-1.11.1.js"></script>
     <script>
-        document.write("<h1 id=\"turn_text\"> User1's turn </h1>");
+        var userName = "Unktnown";
+        document.write("<h1 id=\"turn_text\"> " + userName  + " turn </h1>");
         $(document).ready(function() {
             $('#turn_text').show();
 
@@ -97,6 +98,8 @@ $(document).ready(function() {
     }).done(function(dataUsers) {
 
         user1_units_to_deploy = dataUsers["users"]["user1"]["units_to_deploy"];
+        userName = dataUsers["users"]["user1"]["userName"];
+        $('#turn_text').replaceWith("<h1 id=\"turn_text\"> " + userName  + " turn </h1>");
         //user.units_to_deploy = data;
         });
 
@@ -150,7 +153,6 @@ var user = {
 
     var socket = io();
     socket.emit('testowy_event', JSON.stringify(user.units_to_deploy), function(data){
-       alert(user.units_to_deploy);
        console.log('ACK from server wtih data: ', data);
  });
 

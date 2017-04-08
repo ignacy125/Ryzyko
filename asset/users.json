@@ -2,6 +2,7 @@
 	"users": {
 		"user1": {
 			"turn_id": "0",
+			"userName": "Ernest",
 			"turn": "false",
 			"units_to_deploy": "25",
 			"color": "red"
