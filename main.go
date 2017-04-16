@@ -23,6 +23,12 @@ func main() {
 			//s := strconv.FormatInt(i, 10)
 			return msg//Sending ack with data in msg back to client, using "return statement"
 		})
+		so.On("send_deployed_units_amount", func(msg string) string {
+			return msg
+		})
+		so.On("send_user1_roll", func(msg string) string {
+			return msg
+		})
 		so.On("chat message", func(msg string) {
 			m := make(map[string]interface{})
 			m["a"] = "你好"

@@ -1,12 +1,11 @@
 {
 	"continents": {
 		"North_america": {
-			"ID": "0",
 
 			"Alaska": {
 				"ID": "0",
 				"units": "0",
-				"owner": "null"
+				"owner": "0"
 
 			},
 			"North_west": {
