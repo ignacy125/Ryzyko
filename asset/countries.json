@@ -1,0 +1,68 @@
+{
+	"continents": {
+		"North_america": {
+
+			"Alaska": {
+				"ID": "0",
+				"units": "0",
+				"owner": "0"
+
+			},
+			"North_west": {
+				"ID": "1",
+				"units": "0",
+				"owner": "null"
+
+			},
+			"Alberta": {
+				"ID": "2",
+				"units": "0",
+				"owner": "null"
+
+			},
+			"Quebec": {
+				"ID": "3",
+				"units": "0",
+				"owner": "null"
+
+			},
+			"Ontario": {
+				"ID": "4",
+				"units": "0",
+				"owner": "null"
+
+			},
+			"Greenland": {
+				"ID": "5",
+				"units": "0",
+				"owner": "null"
+
+			},
+
+			"Western_usa": {
+				"ID": "6",
+				"units": "0",
+				"owner": "null"
+
+			},
+			"Eeastern_usa": {
+				"ID": "7",
+				"units": "0",
+				"owner": "null"
+
+			},
+			"Central_america": {
+				"ID": "8",
+				"units": "0",
+				"owner": "null"
+
+			}
+
+
+		}
+	}
+
+	
+}
+	
+	

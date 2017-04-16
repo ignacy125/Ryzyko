@@ -1,0 +1,29 @@
+{
+	"users": {
+		"user1": {
+			"turn_id": "0",
+			"userName": "Ernest",
+			"turn": "false",
+			"units_to_deploy": "25",
+			"color": "red"
+		},
+		"user2": {
+			"turn_id": "-1",
+			"turn": "false",
+			"units_to_deploy": "25",
+			"color": "blue"
+		},
+		"user3": {
+			"turn_id": "-1",
+			"turn": "false",
+			"units_to_deploy": "25",
+			"color": "green"
+		},
+		"user4": {
+			"turn_id": "-1",
+			"turn": "false",
+			"units_to_deploy": "25",
+			"color": "brown"
+		}
+	}
+}

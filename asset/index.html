@@ -1,0 +1,432 @@
+<!doctype html>
+<html>
+<head>
+  <title>Ryzyko</title>
+  <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+
+      #map {
+        position: relative;
+        z-index: 1;
+      }
+
+      #map area {
+        z-index: 1;
+      }
+
+      #Alaska {
+        z-index: 999;
+        display: block;
+        background-color: red;
+      }
+
+      div {
+        position: relative;
+        display: block;
+      }*/
+
+      /*.highlight {
+      background-color: red;
+       z-index: 999;
+      }
+
+      #text {
+        position: absolute;
+        display: block;
+      }
+
+
+    */
+
+    </style>
+    <script src="/jquery-1.11.1.js"></script>
+    <script>
+        var userName = "Unknown";
+        document.write("<h1 id=\"turn_text\"> " + userName  + " turn </h1>");
+        $(document).ready(function() {
+            $('#turn_text').show();
+
+
+        });
+
+    </script>
+
+
+</head>
+
+<ul id="list_owned_countries"></ul>
+
+
+
+<p id="unit_text"> Posiadasz unknown jednostek do rozmieszczenia</p>
+<button id="checkUserUnitsAmountBtn">Check amount of user units</button>
+<button id="deployBtn2" style="display: none">Deploy to country</button>
+<button id="attackBtn" style="display: none">Attack country</button>
+<!--<button id="deployBtn"> Deploy 1 unit </button>-->
+
+<div class="highlight" id="first_area_highlight"></div>
+
+
+<img id="map" src="map-with-names.jpg" border="0" width="1920" height="1080" orgWidth="1920" orgHeight="1080" usemap="#gameMap" alt="" />
+<map name="gameMap" id="gamingMap">
+    <area  alt="" title="" href="North_west.html" shape="rect" coords="168,132,322,187" target="_self"   id="North_West" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' title="Metadata'd up a bit" />
+    <area  alt="" title="" href="alaska.html" shape="rect" coords="20,113,136,215"  target="_self" id="Alaska"/>
+
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="171,209,276,291" target="_self"  id="Alberta"   />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="292,197,380,298"  target="_self"    id="Ontario" />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="180,307,306,389"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="316,343,408,430"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="400,219,492,306"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="446,22,638,180"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="206,490,322,570"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="438,647,560,767"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="294,582,445,635"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="341,855,456,988"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="329,739,406,788"  target="_self"   id="Greenland"  />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="624,623,794,774"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="806,602,915,650"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="878,679,978,770"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="801,918,944,1052"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="832,788,906,850"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="974,930,1072,1012"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="610,461,727,555"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="729,306,846,400"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="749,433,866,527"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="578,292,695,386"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="643,175,723,240"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="738,127,862,244"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="876,234,990,425"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="952,501,1076,660"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1045,354,1124,456"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1085,194,1152,320"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1170,75,1244,235"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1279,217,1340,297"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1268,337,1376,404"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1203,437,1373,511"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1132,531,1219,693"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1263,584,1350,665"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1418,100,1545,181"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1434,715,1534,796"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1255,750,1411,857"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1335,909,1435,1016"  target="_self"     />
+    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1516,842,1606,1043"  target="_self"     />
+    <area shape="rect" coords="1918,1078,1920,1080" alt="Image Map"  title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
+</map>
+
+
+
+<script src="/socket.io-1.3.7.js"></script>
+
+<script>
+$(document).ready(function() {
+
+var a;
+
+
+    $('area').click(function(e) {
+        e.preventDefault();
+    });
+
+    $.getJSON('users.json', {
+        format: "json",
+        async: false
+
+    }).done(function(dataUsers) {
+
+        user1_units_to_deploy = dataUsers["users"]["user1"]["units_to_deploy"];
+        userName = dataUsers["users"]["user1"]["userName"];
+        $('#unit_text').replaceWith("<p id=\"unit_text\"> Posiadasz " + user1_units_to_deploy + " jednostek do rozmieszczenia </p>");
+        $('#turn_text').replaceWith("<h1 id=\"turn_text\"> " + userName  + " turn </h1>");
+        //user.units_to_deploy = data;
+        return console.log("Pobrano users.json");
+        });
+
+
+
+
+
+    /*var test;
+      $.ajax({
+    type: "GET",
+    format: "json",
+    async: false,
+    url: "users.json",
+
+    success: function(dataUsers){
+        user1_units_to_deploy = dataUsers["users"]["user1"]["units_to_deploy"];
+        userName = dataUsers["users"]["user1"]["userName"];
+        $('#turn_text').replaceWith("<h1 id=\"turn_text\"> " + userName  + " turn </h1>");
+        //user.units_to_deploy = data;
+        return console.log("Pobrano users.json");
+        test = 1;
+
+
+    },
+});
+
+console.log(test);
+*/
+    $.getJSON('countries.json', {
+        format: "json",
+        async: false
+    }).done(function(dataCountries) {
+
+
+        alaska_units = dataCountries["continents"]["North_america"]["Alaska"]["units"]; //Bez var, żeby zmienna w funckji stała się globalna
+        northWest_units = dataCountries["continents"]["North_america"]["North_west"]["units"];
+
+        alaska_owner = dataCountries["continents"]["North_america"]["Alaska"]["owner"];
+
+        /*var getUnitsKey = function(data, keyPropName, valuePropName) {
+            return $.countries(dataCountries, function(item, i) {
+            return {
+                key:   item[keyPropName],
+                value: item[valuePropName]
+            }
+          });
+        };
+        */
+        //countryKeyUnits = dataCountries.countries[continent][country]["units"]; // Nadal nie może odczytać countries...
+        //countryKeyOwner = dataCountries.countries[continent][country]["owner"];
+        // alert(alaska_units); //Działa...
+
+        return console.log("Pobrano countries.json");
+    });
+
+
+
+
+    function checkUserUnits() {
+
+    socket = io();
+    socket.emit('testowy_event', JSON.stringify(user1_units_to_deploy), function(data){
+       console.log('Użytkownik 1 posiada ', data + ' jednostek do rozmieszczenia (wysłano na serwer)');
+ });
+
+        if (user1_units_to_deploy > 0) { //TODO Czemu zmienna user1_units_to_deploy działa tylko wtedy kiedy jest w funkcji i jest wywołana poprzez coś innego?
+
+                 do {
+                 $('#deployBtn2').show();
+                 $('#attackBtn').show();
+                 console.log("Posiadasz " + user1_units_to_deploy + " jednostek do rozmieszczenia");
+
+                 break;
+                 } while (user1_units_to_deploy > 0);
+        } else if(user1_units_to_deploy === 0)  {
+                    $('#deployBtn2').click(function() {
+                        alert("Nie posiadasz już jednostek do rozmieszczenia");
+                    });
+                    return console.log("Nie posiadasz już jednostek do rozmieszczenia");
+        }
+    }
+
+    function deployBtn(countryKeyOwner) {
+
+        countryKeyOwner = 1; //Przypisanie właściciela regionowi
+        do { //Początek pętli
+            user1_units_to_deploy -= 1;
+            var socket = io();
+            socket.emit('testowy_event', JSON.stringify(user1_units_to_deploy), function(data){
+            console.log('ACK from server wtih data: ', data);
+            });
+            console.log(user1_units_to_deploy);
+            if (user1_units_to_deploy === 0) {
+                $('#deployBtn').remove(); //Albo hide()
+            }
+            break; //Przerwanie pętli
+        } while (user1_units_to_deploy < 0) //Warunek i koniec pętli
+
+    }; // Koniec funkcji deployBtn
+
+
+
+        function getCountryInfo() { //Początek funkcji pobierającej informacje, o tym, który region zajął użytkownik
+
+        var reg = [0-9];
+
+        chosenCountry = prompt("Który kraj chcesz zająć? Wpisz jego nazwę lub ID");
+
+        if (chosenCountry === "") {
+            alert("Wpisz nazwę lub ID kraju");
+            return false;
+        /*}  else if ( $.isNumeric(chosenCountry)  ) {
+            alert("Wpisz poprawną nazwę kraju. Nie używaj liczb");
+            return false;
+           */
+            } else  {
+
+            $('#list_owned_countries').css('display', 'block');
+                switch ( chosenCountry ) {
+                    case 'Alaska':
+                    case '1':
+                        user1_units_to_deploy--;
+                        alaska_units++;
+                        $('#unit_text').replaceWith("<p id=\"unit_text\"> Posiadasz " + user1_units_to_deploy + " jednostek do rozmieszczenia </p>");
+                        /*$('#list_owned_countries').text(function(index) {
+                            /*if (typeof chosenCountry === 'number') {
+                                return 'Alaska';
+                            } else if (typeof chosenCountry === 'string') {
+                                return chosenCountry;
+                           }*/
+                        //TODO SEND DATA TO SERVER
+                        socket.emit('send_deployed_units_amount', JSON.stringify(alaska_units), function(data){
+                            console.log('Wysłano na serwer liczbę jednostek rozmieszczonych do kraju Alaska: ' , data);
+                        });
+                        console.log("Pozostało jednostek do rozmieszczenia: " + user1_units_to_deploy);
+                        console.log("Rozmieszczono jednostkę w Alaska");
+                        console.log("Liczba jednostek w Alasce: " + alaska_units);
+                        return $('#list_owned_countries').append('<li> Alaska </li>' + alaska_units);
+                        break;
+                    case 'North West':
+                    case '2':
+                        //countryKeyUnits += 1;
+                        user1_units_to_deploy--;
+                        northWest_units++;
+                        $('#unit_text').replaceWith("<p id=\"unit_text\"> Posiadasz " + user1_units_to_deploy + " jednostek do rozmieszczenia </p>");
+
+                        //TODO SEND DATA TO SERVER
+                        socket.emit('send_deployed_units_amount', JSON.stringify(northWest_units), function(data){
+                            console.log('Wysłano na serwer liczbę jednostek rozmieszczonych do kraju North West:' , data);
+                        });
+                        console.log("Pozostało jednostek do rozmieszczenia: " + user1_units_to_deploy);
+                        console.log("Rozmieszczono jednostkę w Północno-zachodnia Ameryka");
+                        console.log("Liczba jednostek w Północno-zachodniej Ameryce: " + northWest_units);
+                        return $('#list_owned_countries').append('<li> North West: </li>' + '<span>' + northWest_units + '</span>');
+                        break;
+
+                    }
+            }
+
+        }
+
+
+        function roll_dice() {
+            user1_number = Math.floor(Math.random() * 6) + 1;
+            socket.emit('send_user1_roll', JSON.stringify(user1_number), function(data){
+                            console.log('Wysłano na serwer wynik rzutu kostką użytkownika 1: ' , data);
+             });
+             alert("Twój wynik rzutu kostką: " + user1_number);
+             //TODO Teraz kolej 2 użytkownika
+
+
+
+        }
+
+
+        function data_to_attack(country_attack, country, number ) {
+            /*switch (country_to_attack) {
+                case 'country':
+                case 'number':
+
+
+            }
+            */
+        }
+
+        function attack() {
+
+
+            if(user1_units_to_deploy > 0) {
+                var country_attack = prompt("Który kraj chcesz zaatakować? Wpisz jego nazwę lub ID.");
+                switch (country_attack) {
+                    case 'Alaska':
+                    case '1':
+                        if(alaska_owner === 1 || alaska_owner === 2 || alaska_owner === 3 || alaska_owner === 4) {
+                            alert("kraj jest już zajęty");
+
+                        } else { //Atak
+                                var ask = confirm("Zaatakować Alaskę?");
+                                if (ask == true) {
+                                    roll_dice();
+
+                                } else {
+                                    return false;
+
+                                }
+
+                           alaska_owner = 1; //Dla pierwszego użytkownika
+
+
+                        }
+                       break;
+
+                }
+             }  else if (user1_units_to_deploy === 0) {
+                alert("Nie masz jednostek do ataku");
+
+             }
+
+
+
+        }
+
+        /*cnts = [];
+        chosenCountry = $('#gamingMap area').each(function() {
+                             cnts.push($(this).attr('id'))
+
+                             });
+        if ( cnts[1] == 'Alaska') {
+             alaska_units++;
+                console.log("Liczba jednostek w Alasce: " + alaska_units);
+
+        } else if ( cnts[0] == 'North_West') {
+
+            northWest_units++;
+            console.log("Liczba jednostek w Północno-zachodniej Ameryce: " + northWest_units);
+        } else {
+            alert("error");
+
+        }
+        /*switch ( cnts[i] ) {
+
+            case 'Alaska':
+
+                alaska_units++;
+                console.log("Liczba jednostek w Alasce: " + alaska_units);
+                break;
+            case 'North_West':
+                //countryKeyUnits += 1;
+                northWest_units++;
+                console.log("Liczba jednostek w Północno-zachodniej Ameryce: " + northWest_units);
+                break;
+            }
+            */
+
+
+    /*$('#gamingMap area').click(function() {
+       getCountryInfo();
+
+    });
+    */
+    $('#deployBtn2').click(function() {
+        getCountryInfo();
+    });
+
+    $('#deployBtn').click(function() {
+        //$('area').unbind('click'); // Funkcja cofająca wywołanie PreventDefault()
+        //deployBtn();
+      });
+     $('#checkUserUnitsAmountBtn').click(function() {
+        checkUserUnits();
+
+     });
+
+     $('#attackBtn').click(function() {
+        attack();
+     });
+
+
+
+
+
+}); // Koniec funkcji ready
+    </script>
+</body>
+</html>
